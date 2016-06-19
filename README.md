@@ -147,7 +147,7 @@ requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, 1);
 
     }
 ```
-*6.还有一个有意思的API
+* 6.还有一个有意思的API
 这个API主要用于给用户一个申请权限的解释，该方法只有在用户在上一次已经拒绝过你的这个权限申请。也就是说，用户已经拒绝一次了，你又弹个授权框，你需要给用户一个解释，为什么要授权，则使用该方法。
 ```javascript
 //shouldShowRequestPermissionRationale这个方法,应用安装后第一次调用时,返回false,
@@ -162,3 +162,6 @@ requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, 1);
         Toast.makeText(MainActivity.this, "shouldShowRequestPermissionRationale", Toast.LENGTH_SHORT).show();
   }
 ```
+##总结
+在最新的Android系统的版本里,对权限的管理尤为重要,向用户提示权限申请的时候的时机也尤为重要,这里需要顾及到用户体验,
+适时的弹窗,才能让用户不对软件产生反感.
