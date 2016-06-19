@@ -15,6 +15,7 @@ import java.util.Arrays;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
+    private static final int mRequestCode = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 //申请权限
                 //第一个参数是需要申请的所有权限,第二个参数是请求码
-                requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, 1);
+                requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, mRequestCode);
                 Log.i(TAG, "申请权限");
                 Toast.makeText(MainActivity.this, "申请权限", Toast.LENGTH_SHORT).show();
             } else {
@@ -67,5 +68,23 @@ public class MainActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         System.out.println(requestCode + ":" + Arrays.toString(permissions) + ":" + Arrays.toString(grantResults));
+        switch (requestCode) {
+            case mRequestCode: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+
+                } else {
+
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+                return;
+            }
+        }
+
     }
 }
